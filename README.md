@@ -3,11 +3,13 @@
 ## 開発環境
 
 
-### フロントエンド
+### フロントエンド(UI/UX)
+
 
 HTML＋JavaScript
-vue.js,node.js.
 
+**Framewrok**: [https://ja.vuejs.org/](vue.js) ,node.js, React, Angular
 
 ### server
+
 streamlit,
