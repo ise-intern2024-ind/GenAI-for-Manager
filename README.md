@@ -1,4 +1,4 @@
-# GenAI-for-Manager
+# GenAI-for-Manager(Manager GPT)
 
 ## 開発環境
 
