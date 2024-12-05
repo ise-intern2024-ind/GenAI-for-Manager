@@ -2,11 +2,6 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
-roles = ["manager"]
-object_name = [
-    "an apple", "a ball", "a banana", "a fork", "a chick", "a knife", "a sour lemon",
-    "a pear", "a spoon", "a plum", "nothing"
-]
 
 app = FastAPI()
 

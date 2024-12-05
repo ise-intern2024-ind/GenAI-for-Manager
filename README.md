@@ -2,25 +2,26 @@
 
 ## 開発環境
 
-
 ### フロントエンド(UI/UX)
+HTML＋CSS+JavaScript
 
-
-HTML＋JavaScript
-
-**Framewrok**: vue.js,node.js, React, Angular
-
+**Framewrok**: vue.js
 ### server
+OS: Linux
 
 ### バックトエンド
+- [x] FastAPI
 
-- [ ] Express
-- [ ] Nest.js
-- [ ] Django
-- [ ] Flask
-- [ ] FastAPI
+```python
 
-### データ
+
+```
+```
+uvicorn LLMAPI:app --reload
+```
+### スーパーマーケットのデータ
+URL:http://www.j-sosm.jp/dl/index.html
+
 
 公開されているAPI：
 
