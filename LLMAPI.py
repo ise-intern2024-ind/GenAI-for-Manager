@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from openai import OpenAI
-
+from fastapi.middleware.cors import CORSMiddleware
 roles = ["manager"]
 object_name = [
     "an apple", "a ball", "a banana", "a fork", "a chick", "a knife", "a sour lemon",
@@ -10,19 +10,31 @@ object_name = [
 
 app = FastAPI()
 
+# Add CORS Middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
+
+# class ChatRequest(BaseModel):
+#     role_num: int
+#     object_now: int
+#     object_jstnow: int = 10  # Default to 10
+
 class ChatRequest(BaseModel):
-    role_num: int
-    object_now: int
-    object_jstnow: int = 10  # Default to 10
+    input: str
+
 
 @app.post("/generate_response")
 async def generate_response(request: ChatRequest):
     # Role-based context
-    sys_context = f"I will input a number and you give me a passage".format(roles[request.role_num])
+    sys_context = f"ユーザーはマネージャーです、データ分析が欲しい"
     # Previously shown object
-    ast_context = f"You had been shown {object_name[request.object_jstnow]} just now"
+    ast_context = f"データ分析の機能、入力はスーパーマーケットのデータ"
     # User context based on current object
-    user_context = "1".format(object_name[request.object_now])
+    user_context = ""
     
     # OpenAI client setup
     client = OpenAI(
@@ -32,7 +44,7 @@ async def generate_response(request: ChatRequest):
     
     # Chat completion
     response = client.chat.completions.create(
-        model="llama3",
+        model="elyza:jp8b",
         messages=[
             {"role": "system", "content": sys_context},
             {"role": "assistant", "content": ast_context},
