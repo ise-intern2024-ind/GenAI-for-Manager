@@ -1,8 +1,0 @@
-@import url('../styles/normalize.scss');
-@import url('../styles/elementui.scss');
-@import url('../styles/icon.scss');
-//sass变量导入无效，我们去vite.config.js进行配置
-//@import url('../styles/sassConfig.scss')
-
-.pull-right { float: right;}
-.margin-top-30 { margin-top: 30px;}
