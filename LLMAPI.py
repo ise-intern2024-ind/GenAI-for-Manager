@@ -51,4 +51,4 @@ async def generate_response(request: ChatRequest):
     return {"response": response.choices[0].message.content}
 
 # The app can be run using `uvicorn` for testing purposes:
-# uvicorn filename:app --reload
+# uvicorn LLMAPI:app --reload port:5000

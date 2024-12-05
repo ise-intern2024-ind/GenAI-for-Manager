@@ -1,18 +1,18 @@
 <template>
     <div class="login_box">
         <div class="login_containers">
-            <h1 style="text-align:center;font-size: 20px;margin-bottom: 10px;">管理员登录</h1>
+            <h1 style="text-align:center;font-size: 20px;margin-bottom: 10px;">マネージャーGPTログイン</h1>
             <el-form label-position="left" label-width="0px" :model="form" :form="form" ref="ruleForm" :rules="rules">
                 <el-form-item prop="name">
-                    <el-input type="text" v-model="form.name" auto-complete="off" placeholder="用户名"></el-input>
+                    <el-input type="text" v-model="form.name" auto-complete="off" placeholder="ユーザーネーム"></el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                    <el-input type="password" v-model="form.password" auto-complete="off" placeholder="密码" show-password>
+                    <el-input type="password" v-model="form.password" auto-complete="off" placeholder="パスワード" show-password>
                     </el-input>
                 </el-form-item>
                 <el-form-item style="width: 100%">
                     <el-button type="primary" style="width: 100%;background: #505458;border: none"
-                        @click="toLogin">登录</el-button>
+                        @click="toLogin">ログイン</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -33,10 +33,10 @@ const form = reactive({
 })
 const rules = reactive({
     name: [
-        { required: true, message: '请输入用户名', trigger: 'blur' },
+        { required: true, message: 'ユーザーネームを入力してください', trigger: 'blur' },
     ],
     password: [
-        { required: true, message: '请输入密码', trigger: 'blur' }
+        { required: true, message: 'パスワードを入力してください', trigger: 'blur' }
     ],
 })
 const list = reactive([
@@ -58,14 +58,14 @@ const toLogin = ()=>{
             if(isLogin){
                 resetForm()
                 ElMessage({
-                    message: '登录成功!',
+                    message: 'ログイン完了しました!',
                     type: 'success'
                 });
                 router.push({ path:'/console' })
             }else{
                 return ElMessage({
                     type: 'error',
-                    message: '用户名或者密码错误!'
+                    message: 'ユーザーネームあるいはパスワードが違います！'
                 });
             }
         }

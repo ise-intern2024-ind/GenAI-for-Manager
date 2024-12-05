@@ -298,7 +298,7 @@ const callLlama3Api = async () => {
     responseDiv.innerHTML = "Loading...";
 
     try {
-        const response = await fetch('http://localhost:8000/generate_response', {
+        const response = await fetch('http://localhost:5000/generate_response', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
