@@ -18,9 +18,8 @@ OS: Linux
 ### バックトエンド
 - [x] FastAPI
 - [x] Ollama
-- [https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B] Llama-3-ELYZA-JP-8B(Llama 3 の日本語継続事前学習モデル)
-- [ ]
-
+- [x] OpenAI
+- [x] Llama-3-ELYZA-JP-8B(Llama 3 の日本語継続事前学習モデル)[https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B]
 
 ```python
 from fastapi import FastAPI
@@ -76,7 +75,7 @@ async def generate_response(request: ChatRequest):
     return {"response": response.choices[0].message.content}
 
 # The app can be run using `uvicorn` for testing purposes:
-# uvicorn filename:app --reload
+# uvicorn LLMAPI:app --host 0.0.0.0 --port 5000
 
 
 ```
@@ -86,11 +85,8 @@ uvicorn LLMAPI:app --reload
 ### スーパーマーケットのデータ
 URL:http://www.j-sosm.jp/dl/index.html
 
-公開されているAPI：
-
-
 ### サーバー
-
+OS: Linux
 
 ### TODO
 
