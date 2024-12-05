@@ -5,14 +5,19 @@
 
 ### フロントエンド(UI/UX)
 HTML＋CSS+JavaScript
+**Framewrok**: vue.js, node.js
+```
+cd first_vue3_admin11
+npm run dev
+```
 
-**Framewrok**: vue.js
+
 ### server
 OS: Linux
 
 ### バックトエンド
 - [x] FastAPI
-- [ ] Ollama
+- [x] Ollama
 - [https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B] Llama-3-ELYZA-JP-8B(Llama 3 の日本語継続事前学習モデル)
 - [ ]
 
