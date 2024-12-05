@@ -62,10 +62,10 @@
         
         <!-- 新增的HTML功能部分开始 -->
         <div class="manager-gpt">
-            <h1>Manager GPT</h1>
+            <h1>マネージャーAgent</h1>
             <textarea id="inputText" rows="4" cols="50" placeholder="Enter your prompt here..."></textarea>
             <br>
-            <button @click="callLlama3Api">Send Request</button>
+            <button @click="callLlama3Api">送信</button>
             <div id="response"></div>
         </div>
         <!-- 新增的HTML功能部分结束 -->
@@ -339,9 +339,27 @@ const callLlama3Api = async () => {
         }
 
         responseDiv.innerHTML = `<strong>Response:</strong> ${resultText.trim()}`;
+
+        // 添加5秒后更新折线图的数据的功能
+        setTimeout(() => {
+            updateChartData();
+        }, 1000);
     } catch (error) {
         responseDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
     }
+}
+
+const updateChartData = () => {
+    // 更新 orderData 数据
+    orderData.data = orderData.data.map(item => {
+        return Object.keys(item).reduce((newItem, key) => {
+            newItem[key] = item[key] + Math.floor(Math.random() * 200) - 100; // 随机变动数据
+            return newItem;
+        }, {});
+    });
+    
+    // 重新渲染折线图
+    getList1();
 }
 
 onMounted(()=>{
@@ -365,7 +383,7 @@ const getList1 = ()=>{
 
     const option = {
         title: {
-            text: '商品类别数量'
+            text: '商品の導入数の計画'
         },
         //提示框
         tooltip:{
@@ -469,6 +487,7 @@ const getList3=()=>{
     V.setOption(videoOption)
 }
 </script>
+
 
 <style lang="scss" scoped>
 .user{

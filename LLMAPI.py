@@ -46,7 +46,7 @@ async def generate_response(request: ChatRequest):
             {"role": "user", "content": user_context}
         ]
     )
-    
+    print(response)
     # Return response
     return {"response": response.choices[0].message.content}
 
