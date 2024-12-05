@@ -18,6 +18,7 @@ OS: Linux
 ### バックトエンド
 - [x] FastAPI
 - [x] Ollama
+- [ ] OpenAI
 - [https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B] Llama-3-ELYZA-JP-8B(Llama 3 の日本語継続事前学習モデル)
 - [ ]
 
