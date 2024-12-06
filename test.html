@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager GPT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"], 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .output-box {
+            margin-top: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manager GPT</h1>
+        
+        <div class="form-group">
+            <label for="dataInput">データを入力:</label>
+            <input type="text" id="inputText" placeholder="データをここに入力">
+        </div>
+
+        <div class="form-group">
+            <button id="processButton" onclick="callLlama3Api()">送信!</button>
+        </div>
+
+        <div class="form-group">
+            <label for="output">AIからの結果:</label>
+            <textarea id="response" class="output-box" rows="10" readonly></textarea>
+        </div>
+    </div>
+    <script>
+        async function callLlama3Api() {
+            const inputText = document.getElementById("inputText").value;
+            const responseDiv = document.getElementById("response");
+            responseDiv.value = "Loading...";
+
+            try {
+                const response = await fetch('http://localhost:5000/generate_response', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        input: inputText
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder("utf-8");
+                let done = false;
+                let resultText = "";
+
+                while (!done) {
+                    const { value, done: readerDone } = await reader.read();
+                    done = readerDone;
+                    if (value) {
+                        const chunk = decoder.decode(value, { stream: true });
+                        const parts = chunk.split(/\n+/);
+                        for (const part of parts) {
+                            if (part.trim()) {
+                                try {
+                                    const json = JSON.parse(part);
+                                    if (json.response) {
+                                        resultText += json.response;
+                                    }
+                                } catch (e) {
+                                    console.error("Failed to parse JSON:", e);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                responseDiv.value = resultText.trim();
+            } catch (error) {
+                responseDiv.value = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
