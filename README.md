@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/d79e53e1-3645-4151-941a-c2d1832ab0cd)# GenAI-for-Manager(Manager GPT)
+# GenAI-for-Manager(Manager GPT)
 
 プロジェクト作者：楊 沢華、角田 大司郎、原田 諒、徐 遠楓
 ## 紹介
