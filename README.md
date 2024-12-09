@@ -88,8 +88,6 @@ uvicorn LLMAPI:app --reload
 ### スーパーマーケットのデータ
 URL:http://www.j-sosm.jp/dl/index.html
 
-### サーバー
-OS: Linux
 
 ### TODO
 
