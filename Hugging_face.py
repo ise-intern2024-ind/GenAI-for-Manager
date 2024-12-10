@@ -1,10 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
-from huggingface_hub import InferenceClient
-
-client = InferenceClient(api_key="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")
+import requests
+import json
 
 app = FastAPI()
 
@@ -16,44 +14,50 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-# class ChatRequest(BaseModel):
-#     role_num: int
-#     object_now: int
-#     object_jstnow: int = 10  # Default to 10
-
 class ChatRequest(BaseModel):
     input: str
 
-
 @app.post("/generate_response")
 async def generate_response(request: ChatRequest):
-    # Role-based context
-    sys_context = f"ユーザーはマネージャーです、データ分析が欲しい"
-    # Previously shown object
-    ast_context = f"データ分析の機能、入力はスーパーマーケットのデータ"
-    # User context based on current object
-    user_context = ""
-    # huggingface
 
-    # # OpenAI client setup
-    # client = OpenAI(
-    #     base_url='http://localhost:11434/v1',
-    #     api_key='ollama',  # required, but unused
-    # )
-    
-    # Chat completion
-    response = client.chat.completions.create(
-        model="elyza/Llama-3-ELYZA-JP-8B",
-        messages=[
-            {"role": "system", "content": sys_context},
-            {"role": "assistant", "content": ast_context},
-            {"role": "user", "content": user_context}
-        ],
-        max_tokens=500
-    )
-    print(response)
-    # Return response
-    return {"response": response.choices[0].message.content}
+    contents = [
+        {
+            "parts": [
+                {"text": request.input.strip()}
+            ]
+        }
+    ]
 
-# The app can be run using `uvicorn` for testing purposes:
-# uvicorn LLMAPI:app --host 0.0.0.0 --port 5000
+    GEMINI_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyC_r5BVTFGLI_DfMK2XG7yMO4DDNaogYk4"
+
+    payload = {
+        "contents": contents
+    }
+
+    headers = {
+        "Content-Type": "application/json"
+    }
+
+    # 向 Gemini API 发送请求
+    response = requests.post(GEMINI_ENDPOINT, headers=headers, data=json.dumps(payload))
+    result = response.json()
+    print("Full API Response:", result)  # 调试用，查看完整返回数据
+
+    generated_text = ""
+
+    # 从返回结构中提取文本
+    candidates = result.get("candidates", [])
+    if candidates:
+        first_candidate = candidates[0]
+        content = first_candidate.get("content", {})
+        parts = content.get("parts", [])
+        if parts:
+            generated_text = parts[0].get("text", "")
+
+    print("Extracted Text:", generated_text)  # 调试用，查看提取的文本
+
+    # 将提取到的文本通过 "message" 字段返回给前端
+    return {"response": generated_text}
+
+# 运行命令测试：
+# uvicorn Hugging_face:app --host 0.0.0.0 --port 5000
