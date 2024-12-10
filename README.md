@@ -11,14 +11,14 @@ github:https://github.com/ise-intern2024-ind/GenAI-for-Manager
 - ~~LLMの回答によって、Dashboradのデータvisualization調整。~~　
 
 （システムに関する内容がチームメンバーに対する難しすぎたため、開発は行ったものの、チームが理解するのが困難でした。最終の発表には、ManagerGPTの対話機能のみを使用しました。）
-- 使用した開発ツールのデザイン。
-- バックエンドのFast APIの開発。
+- 開発に使用したツールの選定および設計。
+- FastAPIを使用したバックエンドシステムの設計と開発。
 - test.htmlの中でJavaScriptを使って、バックエンドにRequestとフロントエンドにResponseの開発。
-- サーバでOllamaを使って、日本語のLLM　APIの開発。
-- LLMのプロンプトエンジニアリング(prompt engineering)
-- 入力データ探して、データモデリング。
-- チーム内のグループワークの開発環境作成（githubのRepositories）
-- パワーポイントとソースコード整理とアップロード
+- サーバでOllamaを活用し、日本語対応のLLM APIを開発。
+- LLMのプロンプト設計および最適化 (Prompt Engineering)。
+- 入力データの収集およびデータモデリングの実施。
+- チームの共同作業のため、GitHubリポジトリを用いた開発環境の構築。githubのRepositories）
+- プレゼンテーション資料（PowerPoint）およびソースコードの整理とアップロード。
 - README.mdの作成。
 
 徐 遠楓：UI、UXデザイン。
