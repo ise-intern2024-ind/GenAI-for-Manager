@@ -1,6 +1,6 @@
 # GenAI-for-Manager(Manager GPT)
 
-プロジェクト作者：楊 沢華、徐 遠楓、、角田 大司郎、原田 諒
+プロジェクト作者：楊 沢華、徐 遠楓、角田 大司郎、原田 諒
 
 ## インターシップの貢献：
 楊　沢華：
@@ -37,7 +37,7 @@
 https://private-user-images.githubusercontent.com/149043966/394314820-671292c2-1328-46f3-8df8-c34e487ffa1e.mp4
 
 ## 開発環境
-![](image.png)
+![](/Figs/image3.png)
 
 ### API test
 
@@ -51,13 +51,17 @@ uvicorn LLMAPI:app --host 0.0.0.0 --port 5000　#Ollama環境がある場合。
 
 ### フロントエンド(UI/UX)
 HTML＋CSS+JavaScript
-**Framewrok**: vue.js, node.js
+**Framewrok**: vue.js
 ```
 cd first_vue3_admin11
 npm run dev
 ```
-### 
-
+**ログインとログアウト**
+![ログインと](/Figs/image4.png)
+**Dashborad**
+![Dashborad](/Figs/image6.png)
+**ManagerGPT**
+![ManagerGPT](/Figs/image7.png)
 
 ### バックトエンド
 - [x] FastAPI
