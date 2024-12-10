@@ -31,7 +31,9 @@
 ## 紹介
 マネージャーGPTは、中規模のスーパーマーケットを含む流通業のマネージャーがデータ管理、分析、及び分析結果の生成を行うためのウェブベースの管理システムです。
 以下はシステムの展示ビデオです。
-https://private-user-images.githubusercontent.com/149043966/394314820-671292c2-1328-46f3-8df8-c34e487ffa1e.mp4?
+
+https://private-user-images.githubusercontent.com/149043966/394314820-671292c2-1328-46f3-8df8-c34e487ffa1e.mp4
+
 ## 開発環境
 ![](image.png)
 
