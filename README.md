@@ -32,9 +32,8 @@
 マネージャーGPTは、中規模のスーパーマーケットを含む流通業のマネージャーがデータ管理、分析、及び分析結果の生成を行うためのウェブベースの管理システムです。
 <video width="600" controls>
   <source src="/Figs/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
 </video>
-[text](/Figs/2024-12-10%2022-42-42.mkv)
+
 
 ## 開発環境
 ![](image.png)
