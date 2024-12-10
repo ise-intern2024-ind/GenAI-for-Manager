@@ -1,7 +1,7 @@
 <template>
   <div class="header-wrap">
     <div style="width:260px;display:flex;flex-direction:row;justify-content:space-between;">
-      <h1 style="font-size: 25px;">商品管理系统</h1>
+      <h1 style="font-size: 25px;">データ管理システム</h1>
       <span class="menu-btn" @click="switchAside">
         <svg-icon iconName="menuBtn" className="icon-menu-svg"></svg-icon>
       </span>

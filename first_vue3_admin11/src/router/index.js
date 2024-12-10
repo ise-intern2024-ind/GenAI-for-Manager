@@ -19,7 +19,7 @@ const routes=[
                 path:"/console",
                 name:'Console',
                 meta:{
-                    title:'首页',
+                    title:'ホームページ',
                 },
                 component:()=> import("../views/console/Index.vue")
             }
@@ -29,7 +29,7 @@ const routes=[
         path: "/user",
         name:'User',
         meta:{
-            title:"系统管理",
+            title:"システム管理",
             icon:"user"
         },
         component:()=> import("../views/layout/Index.vue"),
@@ -38,7 +38,7 @@ const routes=[
                 path:'index',
                 name:"UserIndex",
                 meta:{
-                    title:'商品列表'
+                    title:'商品リスト'
                 },
                 component:()=>import("../views/user/Index.vue")
             },
@@ -46,7 +46,7 @@ const routes=[
                 path:'category',
                 name:"UserCategory",
                 meta:{
-                    title:'分类列表'
+                    title:'分类リスト'
                 },
                 component:()=>import("../views/user/Category.vue")
             },
@@ -54,7 +54,7 @@ const routes=[
                 path:'user',
                 name:"Users",
                 meta:{
-                    title:'用户管理'
+                    title:'ユーザー管理'
                 },
                 component:()=>import("../views/user/User.vue")
             },
@@ -62,7 +62,7 @@ const routes=[
                 path:'my',
                 name:"UserMy",
                 meta:{
-                    title:'个人中心'
+                    title:'个人情報'
                 },
                 component:()=>import("../views/user/My.vue")
             }

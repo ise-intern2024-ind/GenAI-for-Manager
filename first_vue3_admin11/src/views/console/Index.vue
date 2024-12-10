@@ -1,12 +1,12 @@
 <template>
     <div>
         <!-- 添加的部分开始 -->
-        <el-alert
+        <!-- <el-alert
             title="欢迎来到管理系统！这是一个重要通知。"
             type="info"
             show-icon
             closable>
-        </el-alert>
+        </el-alert> -->
         <!-- 添加的部分结束 -->
         
         <el-row>
@@ -15,12 +15,12 @@
                     <div class="user">
                         <img src="../../assets/images/a.jpg" alt="" />
                         <div class="userInfo">
-                            <p class="name">Admin</p>
+                            <p class="name">マネージャー</p>
                             <p class="access">{{ userName }}</p>
                         </div>
                     </div>
                     <div class="login-info">
-                        <p>欢迎&nbsp;&nbsp;<span>{{ userName }}</span>&nbsp;&nbsp;到来!</p>
+                        <p>こんにちは！&nbsp;&nbsp;<span>{{ userName }}</span>&nbsp;&nbsp;</p>
                     </div>
                 </el-card>
                 <el-card style="margin-top:20px; height:540px;">
@@ -287,7 +287,7 @@ const videoData = ref([
         value:'3580'
     }
 ])
-const userName = ref('小明同学')
+const userName = ref('中村綾乃')
 const echarts1 = ref(null)
 const echarts2 = ref(null)
 const echarts3 = ref(null)
