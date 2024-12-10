@@ -1,6 +1,7 @@
 # GenAI-for-Manager(Manager GPT)
 
 プロジェクト作者：楊 沢華、徐 遠楓、角田 大司郎、原田 諒
+
 github:https://github.com/ise-intern2024-ind/GenAI-for-Manager
 
 ## チームワークへの貢献：
@@ -8,9 +9,11 @@ github:https://github.com/ise-intern2024-ind/GenAI-for-Manager
 
 - ~~Vue.jsを使って、スーパーマーケットのデータ管理システムのフロントエンド開発した。~~
 ~~（ログインとログアウト、データvisualization、ManagerGPTの機能実現する、データ管理。）~~
-- ~~LLMの回答によって、Dashboradのデータvisualization調整。~~　
-
+- ~~LLMの回答によって、Dashboradのデータvisualization調整。~~
+- 
 （システムに関する内容がチームメンバーに対する難しすぎたため、開発は行ったものの、チームが理解するのが困難でした。最終の発表には、ManagerGPTの対話機能のみを使用しました。）
+
+以下は発表の内容の貢献：
 - 開発に使用したツールの選定および設計。
 - FastAPIを使用したバックエンドシステムの設計と開発。
 - test.htmlの中でJavaScriptを使って、バックエンドにRequestとフロントエンドにResponseの開発。
@@ -21,7 +24,10 @@ github:https://github.com/ise-intern2024-ind/GenAI-for-Manager
 - プレゼンテーション資料（PowerPoint）およびソースコードの整理とアップロード。
 - README.mdの作成。
 
-徐 遠楓：UI、UXデザイン。
+徐 遠楓：
+- UI、UXデザイン。
+- フロントエンドとDashboradのデザイン
+- 一部分のフロントエンドの開発
 
 角田 大司郎：チーム間での役割分担、定期的な意見交換。
 
