@@ -23,7 +23,7 @@ async def generate_response(request: ChatRequest):
     contents = [
         {
             "parts": [
-                {"text": request.input.strip()}
+                {"text": request.input.strip()+"データ分析が欲しい、結果が日本語が欲しい。"}
             ]
         }
     ]

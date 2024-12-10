@@ -1,22 +1,27 @@
 # GenAI-for-Manager(Manager GPT)
 
-プロジェクト作者：楊 沢華、徐 遠楓、原田 諒、
+プロジェクト作者：楊 沢華、徐 遠楓、原田 諒、角田 大司郎
 
 ## インターシップの貢献：
 楊　沢華：
+
+- ~~Vue.jsを使って、スーパーマーケットのデータ管理システムのフロントエンド開発した。~~
+~~（ログインとログアウト、データvisualization、ManagerGPTの機能実現する、データ管理。）~~
+- ~~LLMの回答によって、Dashboradのデータvisualization調整。~~　
+（システムに関する内容がチームメンバーに対する難しすぎたため、開発は行ったものの、チームが理解するのが困難でした。最終的には、ManagerGPTの対話機能のみを使用しました。）
 - 使用した開発ツールのデザイン。
-- Vue.jsを使って、スーパーマーケットのデータ管理システムのフロントエンド開発した。
-（ログイン、データvisualization、ManagerGPTの機能実現する、データ管理。）
-- LLMの回答によって、Dashboradのデータvisualization調整。
-- Fast API開発した。
-- test.htmlの中でJavaScriptを使って、バックエンドにRequestとフロントエンドにResponse開発した。
-- サーバでOllamaを使って、日本語のLLM　API開発した。
+- バックエンドのFast APIの開発。
+- test.htmlの中でJavaScriptを使って、バックエンドにRequestとフロントエンドにResponseの開発。
+- サーバでOllamaを使って、日本語のLLM　APIの開発。
 - LLMのプロンプトエンジニアリング(prompt engineering)
+- 入力データ探して、データモデリング。
+- チーム内のグループワークの開発環境作成（githubのRepositories）
+- パワーポイントとソースコード整理とアップロード
+- README.mdの作成。
 
+徐 遠楓：UI、UXデザイン。
 
-徐 遠楓：UIデザイン。
-
-角田 大司郎：チーム間での役割分担、定期的な意見交換、資料整理。
+角田 大司郎：チーム間での役割分担、定期的な意見交換。
 
 原田 諒: test.htmlの中でHTML＋CSS静的ウェブページの開発。
 
@@ -25,15 +30,25 @@
 
 ## 紹介
 マネージャーGPTは、中規模のスーパーマーケットを含む流通業のマネージャーがデータ管理、分析、及び分析結果の生成を行うためのウェブベースの管理システムです。
+<video width="600" controls>
+  <source src="/Figs/demo.mkv" type="video/webm">
+  Your browser does not support the video tag.
+</video>
+[text](/Figs/2024-12-10%2022-42-42.mkv)
 
 ## 開発環境
+![](image.png)
+
 ### API test
+
+まずは、Terminalに以下の内容を入力。
+```python
+uvicorn Hugging_face:app --host 0.0.0.0 --port 5000 #Ollama環境がない場合。
+uvicorn LLMAPI:app --host 0.0.0.0 --port 5000　#Ollama環境がある場合。
 ```
-uvicorn Hugging_face:app --host 0.0.0.0 --port 5000
-```
-test.html
-![test.html](/Figs/image.png)
-![test.html](/Figs/image2.png)
+ブラウザで test.html を開く。test.html（Fast APIのテスト，HTML+CSS+Javascript）
+![](/Figs/image.png){width=400}![](/Figs/image2.png){width=300}
+
 ### フロントエンド(UI/UX)
 HTML＋CSS+JavaScript
 **Framewrok**: vue.js, node.js
@@ -43,80 +58,28 @@ npm run dev
 ```
 ### 
 
-### server
-OS: Linux
 
 ### バックトエンド
 - [x] FastAPI
-- [x] Ollama
+- [x] [Ollama](https://ollama.com/)
 - [x] OpenAI
-- [x] Llama-3-ELYZA-JP-8B(Llama 3 の日本語継続事前学習モデル)[https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B]
+- [x] [Llama-3-ELYZA-JP-8B(Llama 3 の日本語継続事前学習モデル)](https://huggingface.co/elyza/Llama-3-ELYZA-JP-8B)
+- [x] Gemini(Ollama環境がない場合は、Hugging_face.pyを使っています。)
 
+バックエンドのAPIについて：
+LLMAPI.pyは、自分のPCやサーバーでOllamaを利用し、LLMであるLlama-3-ELYZA-JP-8Bをデプロイして使用することができます。
+GUIが利用できない環境では、Hugging_face.pyを使用してください。このプログラムはGeminiのAPIを利用しており、自分のPC環境を必要としません。
+Terminalに以下の内容を入力。
 ```python
-from fastapi import FastAPI
-from pydantic import BaseModel
-from openai import OpenAI
-from fastapi.middleware.cors import CORSMiddleware
-
-app = FastAPI()
-
-# Add CORS Middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins
-    allow_methods=["*"],  # Allow all HTTP methods
-    allow_headers=["*"],  # Allow all headers
-)
-
-# class ChatRequest(BaseModel):
-#     role_num: int
-#     object_now: int
-#     object_jstnow: int = 10  # Default to 10
-
-class ChatRequest(BaseModel):
-    input: str
-
-
-@app.post("/generate_response")
-async def generate_response(request: ChatRequest):
-    # Role-based context
-    sys_context = f"ユーザーはマネージャーです、データ分析が欲しい"
-    # Previously shown object
-    ast_context = f"データ分析の機能、入力はスーパーマーケットのデータ"
-    # User context based on current object
-    user_context = ""
-    
-    # OpenAI client setup
-    client = OpenAI(
-        base_url='http://localhost:11434/v1',
-        api_key='ollama',  # required, but unused
-    )
-    
-    # Chat completion
-    response = client.chat.completions.create(
-        model="elyza:jp8b",
-        messages=[
-            {"role": "system", "content": sys_context},
-            {"role": "assistant", "content": ast_context},
-            {"role": "user", "content": user_context}
-        ]
-    )
-    
-    # Return response
-    return {"response": response.choices[0].message.content}
-
-# The app can be run using `uvicorn` for testing purposes:
-# uvicorn LLMAPI:app --host 0.0.0.0 --port 5000
-
-
+uvicorn Hugging_face:app --host 0.0.0.0 --port 5000 #Ollama環境がない場合。
+uvicorn LLMAPI:app --host 0.0.0.0 --port 5000　#Ollama環境がある場合。
 ```
-```
-uvicorn LLMAPI:app --reload
-```
+
+
 ### スーパーマーケットのデータ
 URL:http://www.j-sosm.jp/dl/index.html
 
 
 ### TODO
 
-- [ ]Prompt Engineering
+- [x]　パワーポイントとソースコード整理とアップロード

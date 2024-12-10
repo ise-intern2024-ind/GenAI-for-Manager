@@ -35,14 +35,14 @@ const { replace } = useRouter();
 const switchAside = ()=>appStore.setCollapse();
 const { username }= storeToRefs(appStore)
 const handlerLogout = () => {
-  proxy.$confirm('确定退出管理系统后台','提示',{
-    confirmButtonText:"确定",
-    cancelButtonText:"取消",
+  proxy.$confirm('管理システムのバックエンドから退出しますか？','提示',{
+    confirmButtonText:"確認",
+    cancelButtonText:"キャンセル",
     type:'warning',
     draggable:true,
   }).then(()=>{
     proxy.$message({
-        message: '退出系统成功',
+        message: 'システムから正常に退出しました',
         type:'success'
       })
     replace({

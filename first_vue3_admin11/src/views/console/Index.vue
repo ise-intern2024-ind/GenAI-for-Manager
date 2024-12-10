@@ -16,6 +16,7 @@
                         <img src="../../assets/images/a.jpg" alt="" />
                         <div class="userInfo">
                             <p class="name">マネージャー</p>
+                            
                             <p class="access">{{ userName }}</p>
                         </div>
                     </div>
@@ -24,25 +25,23 @@
                     </div>
                 </el-card>
                 <el-card style="margin-top:20px; height:540px;">
-                    <h3 style="text-align:center;margin-bottom: 16px;">热门商品排行</h3>
-                    <el-table
-                    :data="tableData"
-                    :header-cell-style="{textAlign: 'center'}"
-                    :cell-style="{textAlign: 'center'}"
-                    style="width: 100%">
-                    <el-table-column label="排行">
-                        <template #default="{row,$index}">
-                            <span :class="($index + 1) < 4 ? 'addColor' : '' "><em>{{ $index + 1 }}</em></span>
-                        </template>
-                    </el-table-column>
-                        <el-table-column
-                            v-for="(val,key) in tableLabel"
-                            :prop="key"
-                            :label="val"
-                            :key="key"
-                        >
-                        </el-table-column>
-                    </el-table>
+                    <div class="container">
+                    <h1>Manager GPT</h1>
+        
+                     <div class="form-group">
+                　  <label for="dataInput">データを入力:</label>
+                    <input type="text" id="inputText" placeholder="データをここに入力">
+                    </div>
+
+                   <div class="form-group">
+             <button id="processButton" @click="callLlama3Api">送信!</button>
+        </div>
+
+        <div class="form-group">
+            <label for="output">AIからの結果:</label>
+            <textarea id="response" class="output-box" rows="10" readonly></textarea>
+        </div>
+    </div>
                 </el-card>
             </el-col>
             <el-col :span="16" style="padding-left: 10px;">
@@ -58,9 +57,8 @@
                     </el-card>
                 </div>
             </el-col>
-        </el-row>
-        
-        <!-- 新增的HTML功能部分开始 -->
+        <el-col>
+                    <!-- 新增的HTML功能部分开始
         <div class="manager-gpt">
             <h1>マネージャーAgent</h1>
             <textarea id="inputText" rows="4" cols="50" placeholder="Enter your prompt here..."></textarea>
@@ -68,7 +66,11 @@
             <button @click="callLlama3Api">送信</button>
             <div id="response"></div>
         </div>
-        <!-- 新增的HTML功能部分结束 -->
+                新增的HTML功能部分结束 -->
+        </el-col> 
+        </el-row>
+        
+
     </div>
 </template>
 
@@ -174,55 +176,55 @@ const countData = ref([
 const orderData = reactive({
     data: [
         {
-            '电子产品': 1000,
+            '電子製品': 1000,
             '衣服': 1200,
-            '护肤品': 1200,
-            '书籍': 1380,
-            '生活用品': 1560,
-            '水果': 1400,
+            'スキンケア': 1200,
+            '本': 1380,
+            '生活雑貨': 1560,
+            '果物': 1400,
         },
         {
-            '电子产品': 1208,
+            '電子製品': 1208,
             '衣服': 1500,
-            '护肤品': 1700,
-            '书籍': 1080,
-            '生活用品': 1060,
-            '水果': 1200,
+            'スキンケア': 1700,
+            '本': 1080,
+            '生活雑貨': 1060,
+            '果物': 1200,
         },
         {
-            '电子产品': 1202,
+            '電子製品': 1202,
             '衣服': 1550,
-            '护肤品': 1760,
-            '书籍': 1240,
-            '生活用品': 1030,
-            '水果': 1020,
+            'スキンケア': 1760,
+            '本': 1240,
+            '生活雑貨': 1030,
+            '果物': 1020,
         },
         {
-            '电子产品': 1100,
+            '電子製品': 1100,
             '衣服': 1200,
-            '护肤品': 1100,
-            '书籍': 1200,
-            '生活用品': 1280,
-            '水果': 1160,
+            'スキンケア': 1100,
+            '本': 1200,
+            '生活雑貨': 1280,
+            '果物': 1160,
         },
         {
-            '动漫': 1200,
+            'アニメ': 1200,
             '衣服': 1950,
-            '护肤品': 1260,
-            '书籍': 1340,
-            '生活用品': 1430,
-            '水果': 1520,
+            'スキンケア': 1260,
+            '本': 1340,
+            '生活雑貨': 1430,
+            '果物': 1520,
         },
         {
-            '动漫': 2100,
+            'アニメ': 2100,
             '衣服': 2200,
-            '护肤品': 2100,
-            '书籍': 2200,
-            '生活用品': 2280,
-            '水果': 2160,
+            'スキンケア': 2100,
+            '本': 2200,
+            '生活雑貨': 2280,
+            '果物': 2160,
         },
     ],
-    date:['2018','2019','2020','2021','2022','2023']
+    date: ['2018年', '2019年', '2020年', '2021年', '2022年', '2023年']
 })
 const userData = ref([
     {
@@ -256,37 +258,38 @@ const userData = ref([
         active: 400
     },
     {
-        date:'更多',
-        new: 5,
-        active: 200
+        date:'2024',
+        new: 10,
+        active: 400
     },
 ])
 const videoData = ref([
     {
-        name:'电子产品',
-        value:'3300'
+        name: '電子製品',
+        value: '3300'
     },
     {
-        name:'衣服',
-        value:'4000'
+        name: '衣服',
+        value: '4000'
     },
     {
-        name:'护肤品',
-        value:'3000'
+        name: 'スキンケア',
+        value: '3000'
     },
     {
-        name:'书籍',
-        value:'4500'
+        name: '本',
+        value: '4500'
     },
     {
-        name:'生活用品',
-        value:'4060'
+        name: '生活雑貨',
+        value: '4060'
     },
     {
-        name:'水果',
-        value:'3580'
+        name: '果物',
+        value: '3580'
     }
 ])
+
 const userName = ref('中村綾乃')
 const echarts1 = ref(null)
 const echarts2 = ref(null)
@@ -338,7 +341,7 @@ const callLlama3Api = async () => {
             }
         }
 
-        responseDiv.innerHTML = `<strong>Response:</strong> ${resultText.trim()}`;
+        responseDiv.innerHTML = ` ${resultText.trim()}`;
 
         // 添加5秒后更新折线图的数据的功能
         setTimeout(() => {
@@ -462,7 +465,7 @@ const getList2 = ()=>{
 const getList3=()=>{
     const videoOption = {
         title: {
-            text: '商品分类数量'
+            text: '商品分類'
         },
         tooltip:{
             trigger: "item",
@@ -599,4 +602,64 @@ const getList3=()=>{
         display: inline-block;
     }
 }
+
+
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"], 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .output-box {
+            margin-top: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
 </style>

@@ -15,6 +15,10 @@
                         @click="toLogin">ログイン</el-button>
                 </el-form-item>
             </el-form>
+            <h3>テストアカウント:
+                ユーザーネーム：admin  
+                パスワード：123456
+            </h3>
         </div>
     </div>
 </template>
