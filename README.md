@@ -1,5 +1,8 @@
 # GenAI-for-Manager(Manager GPT)
+
+プロジェクト作者：楊 沢華、角田 大司郎、原田 諒、徐 遠楓
 ## 紹介
+
 
 ## 開発環境
 
@@ -85,8 +88,6 @@ uvicorn LLMAPI:app --reload
 ### スーパーマーケットのデータ
 URL:http://www.j-sosm.jp/dl/index.html
 
-### サーバー
-OS: Linux
 
 ### TODO
 
