@@ -8,7 +8,7 @@
 - ~~Vue.jsを使って、スーパーマーケットのデータ管理システムのフロントエンド開発した。~~
 ~~（ログインとログアウト、データvisualization、ManagerGPTの機能実現する、データ管理。）~~
 - ~~LLMの回答によって、Dashboradのデータvisualization調整。~~　
-（システムに関する内容がチームメンバーに対する難しすぎたため、開発は行ったものの、チームが理解するのが困難でした。最終的には、ManagerGPTの対話機能のみを使用しました。）
+（システムに関する内容がチームメンバーに対する難しすぎたため、開発は行ったものの、チームが理解するのが困難でした。最終の発表には、ManagerGPTの対話機能のみを使用しました。）
 - 使用した開発ツールのデザイン。
 - バックエンドのFast APIの開発。
 - test.htmlの中でJavaScriptを使って、バックエンドにRequestとフロントエンドにResponseの開発。
@@ -31,7 +31,7 @@
 ## 紹介
 マネージャーGPTは、中規模のスーパーマーケットを含む流通業のマネージャーがデータ管理、分析、及び分析結果の生成を行うためのウェブベースの管理システムです。
 <video width="600" controls>
-  <source src="/Figs/demo.mkv" type="video/webm">
+  <source src="/Figs/demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 [text](/Figs/2024-12-10%2022-42-42.mkv)
