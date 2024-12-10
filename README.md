@@ -1,6 +1,6 @@
 # GenAI-for-Manager(Manager GPT)
 
-プロジェクト作者：楊 沢華、徐 遠楓、原田 諒、角田 大司郎
+プロジェクト作者：楊 沢華、徐 遠楓、、角田 大司郎、原田 諒
 
 ## インターシップの貢献：
 楊　沢華：
@@ -8,6 +8,7 @@
 - ~~Vue.jsを使って、スーパーマーケットのデータ管理システムのフロントエンド開発した。~~
 ~~（ログインとログアウト、データvisualization、ManagerGPTの機能実現する、データ管理。）~~
 - ~~LLMの回答によって、Dashboradのデータvisualization調整。~~　
+
 （システムに関する内容がチームメンバーに対する難しすぎたため、開発は行ったものの、チームが理解するのが困難でした。最終の発表には、ManagerGPTの対話機能のみを使用しました。）
 - 使用した開発ツールのデザイン。
 - バックエンドのFast APIの開発。
@@ -30,11 +31,8 @@
 
 ## 紹介
 マネージャーGPTは、中規模のスーパーマーケットを含む流通業のマネージャーがデータ管理、分析、及び分析結果の生成を行うためのウェブベースの管理システムです。
-<video width="600" controls>
-  <source src="/Figs/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-[text](/Figs/2024-12-10%2022-42-42.mkv)
+
+https://private-user-images.githubusercontent.com/149043966/394314820-671292c2-1328-46f3-8df8-c34e487ffa1e.mp4
 
 ## 開発環境
 ![](image.png)
