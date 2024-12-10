@@ -13,7 +13,7 @@ github:https://github.com/ise-intern2024-ind/GenAI-for-Manager
 - 
 （システムに関する内容がチームメンバーに対する難しすぎたため、開発は行ったものの、チームが理解するのが困難でした。最終の発表には、ManagerGPTの対話機能のみを使用しました。）
 
-以下は発表の内容の貢献：
+以下は発表の内容への貢献：
 - 開発に使用したツールの選定および設計。
 - FastAPIを使用したバックエンドシステムの設計と開発。
 - test.htmlの中でJavaScriptを使って、バックエンドにRequestとフロントエンドにResponseの開発。
