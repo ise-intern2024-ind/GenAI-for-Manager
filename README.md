@@ -1,8 +1,9 @@
 # GenAI-for-Manager(Manager GPT)
 
 プロジェクト作者：楊 沢華、徐 遠楓、角田 大司郎、原田 諒
+github:https://github.com/ise-intern2024-ind/GenAI-for-Manager
 
-## インターシップの貢献：
+## チームワークへの貢献：
 楊　沢華：
 
 - ~~Vue.jsを使って、スーパーマーケットのデータ管理システムのフロントエンド開発した。~~
