@@ -66,9 +66,9 @@ npm run dev
 **ログインとログアウト**
 ![ログインと](/Figs/image4.png)
 **Dashborad**
-![Dashborad](/Figs/image6.png)
+![Dashborad](/Figs/image7.png)
 **ManagerGPT**
-![ManagerGPT](/Figs/image7.png)
+![ManagerGPT](/Figs/image6.png)
 
 ### バックトエンド
 - [x] FastAPI
